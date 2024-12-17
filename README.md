@@ -4,7 +4,7 @@ Your ultimate anime, movie, and series finder!
 
 ## 🌟 About MadFlix  
 MadFlix is a powerful app that allows users to search for their favorite anime, movies, and series across multiple streaming platforms. With support for real-time search results and links, MadFlix simplifies your entertainment discovery.  
-###🛠️ Usage
+### 🛠️ Usage
 Launch MadFlix.
 Enter the title of an anime, movie, or series in the search bar.
 Select the type (Anime/Movie) and click "Search."
