@@ -1,0 +1,132 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000; 
+    color: #FE07A6; 
+    text-align: center;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #FE07A6; 
+    letter-spacing: 1px;
+}
+
+input {
+    background-color: #111;
+    color: #FE07A6;
+    border: 1px solid #333;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin: 10px;
+    width: 350px;
+    font-family: "Courier New", Courier, monospace;
+    transition: all 0.3s ease;
+}
+
+select {
+    background-color: #111;
+    color: #FE07A6;
+    border: 1px solid #333;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 300;
+    border-radius: 5px;
+    margin: 10px;
+    width: 100px;
+    font-family: "Courier New", Courier, monospace;
+    transition: all 0.3s ease;
+}
+
+button {
+    background-color: #111;
+    color: #FE07A6;
+    border: 1px solid #FE07A6;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Courier New", Courier, monospace;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #FF08FD;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Results Section */
+#results {
+    margin-top: 30px;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+}
+
+.result-item {
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Courier New", Courier, monospace;
+    transition: all 0.3s ease;
+}
+
+.result-item:hover {
+    background-color: #222;
+    transform: translateY(-5px);
+}
+
+.result-item a {
+    color: #FE07A6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result-item i {
+    color: #FE07A6;
+    font-size: 0.9rem;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.copy-button svg {
+    fill: #FE07A6;
+    width: 20px;
+    height: 20px;
+    transition: fill 0.3s ease;
+}
+
+.copy-button:hover svg {
+    fill: #FF08FD;
+}
+
+/* Input Focus */
+select:focus, input:focus, button:focus {
+    outline: none;
+    border-color: #FE07A6;
+}
+

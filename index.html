@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MadFlix - Anime & Movie/Series Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="lottie-animation" 
+            style="
+                width: 320px; 
+                height: 320px; 
+                top: 20px; 
+                left: 50%; 
+                transform: translateX(-50%);
+                position: relative;
+                margin-top: -60px;
+                margin-bottom: -70px;
+                z-index: -5;
+            ">
+        </div>
+        
+        <div class="search-bar">
+            <select id="type">
+                <option value="anime">Anime</option>
+                <option value="movie">Movie/Series</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Enter anime/movie/series name">
+            <button id="searchButton">
+                Search
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                    <path fill="currentColor" d="M21.71 20.29l-4.08-4.08a8 8 0 10-1.42 1.42l4.08 4.08a1 1 0 001.42-1.42zM10 16a6 6 0 110-12 6 6 0 010 12z"/>
+                </svg>
+            </button>
+        </div>
+        <div id="results"></div>
+    </div>
+
+    <!-- Lottie Web Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+    
+    <script>
+        
+        // Lottie Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.focus();
+            const animationContainer = document.getElementById('lottie-animation');
+            lottie.loadAnimation({
+                container: animationContainer, // The DOM element to render the animation
+                renderer: 'svg',              // Rendering format: 'svg', 'canvas', 'html'
+                loop: true,                   // Whether to loop the animation
+                autoplay: true,               // Whether to start the animation automatically
+                path: 'animation.json'        // Path to your local Lottie JSON file
+            });
+        });
+        // Ensure Electron context works properly
+        const { ipcRenderer } = require('electron');
+
+        // Event Listener for Search Button
+        document.getElementById('searchButton').addEventListener('click', async () => {
+            const type = document.getElementById('type').value;
+            const query = document.getElementById('searchInput').value.trim();
+            const resultsContainer = document.getElementById('results');
+
+            if (!query) {
+                resultsContainer.innerHTML = '<p class="error">Please enter a search query.</p>';
+                return;
+            }
+
+            resultsContainer.innerHTML = '<p class="loading" style="font-size: 1.4rem;">Searching<span>.</span><span>.</span><span>.</span></p>';
+
+            try {
+                const results = await ipcRenderer.invoke('search-links', { type, query });
+
+                if (results.length === 0) {
+                    resultsContainer.innerHTML = '<p class="error">No results found.</p>';
+                    return;
+                }
+
+                resultsContainer.innerHTML = results.map((link, index) => `
+                    <div class="result-item">
+                        <a href="${link}" target="_blank">
+                            ${index <= 4 ? `<b>${link}</b> <i style="color:white; font-size:0.8rem">(VPN required in 🇮🇷${index === 4 ? ', Torrent Stream' : ''})</i>` : link}
+                        </a>
+                        <button class="copy-button" onclick="copyToClipboard('${link}')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor" d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm4 4H8a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h12v14z"/>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+            } catch (error) {
+                resultsContainer.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+            }
+        });
+
+        // Function to Copy Link to Clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert('Link copied to clipboard!');
+        }
+
+        // Trigger Search with Enter Key
+        document.getElementById('searchInput').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                document.getElementById('searchButton').click();
+            }
+        });
+
+        // OPTIONAL: Scrollbar Styling (Remove webview error)
+        document.addEventListener("DOMContentLoaded", () => {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                ::-webkit-scrollbar {
+                    width: 5px;
+                }
+                ::-webkit-scrollbar-track {
+                    background: #1e1e1e;
+                }
+                ::-webkit-scrollbar-thumb {
+                    background: #FE07A6;
+                    border-radius: 5px;
+                }
+
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+<style>
+    /* Center-align the content */
+    .main-paragraph {
+      text-align: center;
+    }
+  
+    /* Change the color of the main text */
+    .main-paragraph:not(a) {
+      color: #ffabe4; /* Main text color: Orange */
+    }
+  
+    /* Change the color of the linked words on hover */
+    .main-paragraph a:hover span {
+      color: #e90098 !important; /* Yellow color on hover */
+    }
+  </style>
+  
+  <p dir="ltr" class="main-paragraph">
+    &lt;One Is Glad To Be Of Service&gt;<br>
+    &lt;&lt;Developed with ☕ 🩷
+    &nbsp;by <a href="https://github.com/itsmadson" style="text-decoration:none;" target="_blank" rel="noopener">
+      <span style="color: #FE07A6;">Madson</span>
+    </a>
+  
+    </a>&gt;&gt;
+  </p>
+  
+</body>
+</html>
