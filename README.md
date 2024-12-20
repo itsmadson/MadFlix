@@ -1,4 +1,4 @@
-# MadFlix 🎬✨  
+# Yalda 🎬✨  
 Your ultimate anime, movie, and series finder!  
 ![image](https://github.com/user-attachments/assets/516bdf20-fa11-436b-8b44-08a2fdc3aa4c)
 
