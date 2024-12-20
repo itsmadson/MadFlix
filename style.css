@@ -20,30 +20,37 @@ h1 {
     letter-spacing: 1px;
 }
 
+p {
+    font-family: 'VT323', monospace;
+    font-size:1.3rem;
+}
+
+
 input {
     background-color: #111;
     color: #FE07A6;
     border: 1px solid #333;
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border-radius: 5px;
     margin: 10px;
     width: 350px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'VT323', monospace;
     transition: all 0.3s ease;
 }
+
 
 select {
     background-color: #111;
     color: #FE07A6;
     border: 1px solid #333;
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 300;
     border-radius: 5px;
     margin: 10px;
     width: 100px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'VT323', monospace;
     transition: all 0.3s ease;
 }
 
@@ -52,10 +59,10 @@ button {
     color: #FE07A6;
     border: 1px solid #FE07A6;
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border-radius: 5px;
     cursor: pointer;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'VT323', monospace;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -76,6 +83,7 @@ button:hover {
     display: inline-block;
     width: 100%;
     max-width: 600px;
+    font-size: 1.3rem;
 }
 
 .result-item {
@@ -87,7 +95,8 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
     transition: all 0.3s ease;
 }
 
@@ -104,7 +113,7 @@ button:hover {
 
 .result-item i {
     color: #FE07A6;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
 }
 
 .copy-button {
@@ -130,3 +139,8 @@ select:focus, input:focus, button:focus {
     border-color: #FE07A6;
 }
 
+
+::selection {
+    color: black;
+    background: #FE07A6;
+  }
