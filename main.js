@@ -30,15 +30,15 @@ app.on('window-all-closed', () => {
 // Search Functionality with New Links
 // ---------------------------
 ipcMain.handle('search-links', async (event, { type, query }) => {
-    const sanitizedQuery = query.trim().replace(/\s+/g, '-');
-    const formattedQueryForFmovies = query.trim().replace(/\s+/g, '+');
+    const sanitizedQuery = query.trim().replace(/\s+/g, '-').toLowerCase();
+    const formattedQueryForFmovies = query.trim().replace(/\s+/g, '+').toLowerCase();
 
 
     //search links
     const sflix2Link = `https://sflix2.to/search/${sanitizedQuery}`;
     const movies2watchLink = `https://movies2watch.tv/search/${sanitizedQuery}`;
     const fmoviesLink = `https://ww4.fmovies.co/search/?q=${formattedQueryForFmovies}`;
-    const stremio = `https://web.stremio.com/#/search?search=${query}`;
+    const stremio = `https://web.stremio.com/#/search?search=${query.toLowerCase()}`;
     const m4uhdLink = `https://ww2.m4uhd.tv/search/${query.replace(/\s+/g, '-').toLowerCase()}.html`;
 
     // Add database search for anime or movie (from local file)
