@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MadFlix - Anime & Movie/Series Finder</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -70,7 +71,7 @@
                 return;
             }
 
-            resultsContainer.innerHTML = '<p class="loading" style="font-size: 1.4rem;">Searching<span>.</span><span>.</span><span>.</span></p>';
+            resultsContainer.innerHTML = '<p class="loading">Searching<span>.</span><span>.</span><span>.</span></p>';
 
             try {
                 const results = await ipcRenderer.invoke('search-links', { type, query });
@@ -83,7 +84,7 @@
                 resultsContainer.innerHTML = results.map((link, index) => `
                     <div class="result-item">
                         <a href="${link}" target="_blank">
-                            ${index <= 4 ? `<b>${link}</b> <i style="color:white; font-size:0.8rem">(VPN required in 🇮🇷${index === 4 ? ', Torrent Stream' : ''})</i>` : link}
+                            ${index <= 4 ? `<b>${link}</b> <i style="color:white; font-size:1 rem">(VPN required in 🇮🇷${index === 4 ? ', Torrent Stream' : ''})</i>` : link}
                         </a>
                         <button class="copy-button" onclick="copyToClipboard('${link}')">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +98,7 @@
             }
         });
 
-        // Function to Copy Link to Clipboard
+        // Copy Link to Clipboard
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text);
             alert('Link copied to clipboard!');
@@ -110,7 +111,6 @@
             }
         });
 
-        // OPTIONAL: Scrollbar Styling (Remove webview error)
         document.addEventListener("DOMContentLoaded", () => {
             const style = document.createElement('style');
             style.innerHTML = `
@@ -130,19 +130,18 @@
         });
     </script>
 <style>
-    /* Center-align the content */
     .main-paragraph {
       text-align: center;
     }
   
-    /* Change the color of the main text */
+
     .main-paragraph:not(a) {
-      color: #ffabe4; /* Main text color: Orange */
+      color: #ffabe4; 
     }
   
-    /* Change the color of the linked words on hover */
+
     .main-paragraph a:hover span {
-      color: #e90098 !important; /* Yellow color on hover */
+      color: #e90098 !important; 
     }
   </style>
   
