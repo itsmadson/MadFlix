@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MadFlix - Anime & Movie/Series Finder</title>
+    <title>Yalda - Anime & Movie/Series Finder</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -84,7 +84,7 @@
                 resultsContainer.innerHTML = results.map((link, index) => `
                     <div class="result-item">
                         <a href="${link}" target="_blank">
-                            ${index <= 4 ? `<b>${link}</b> <i style="color:white; font-size:1 rem">(VPN required in 🇮🇷${index === 4 ? ', Torrent Stream' : ''})</i>` : link}
+                            ${index <= 4 ? `<b>${link}</b> <i style="color:white; font-size:1.2rem;">(VPN required in 🇮🇷${index === 4 ? ', Torrent Stream' : ''})</i>` : link}
                         </a>
                         <button class="copy-button" onclick="copyToClipboard('${link}')">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +147,7 @@
   
   <p dir="ltr" class="main-paragraph">
     &lt;One Is Glad To Be Of Service&gt;<br>
-    &lt;&lt;Developed with ☕ 🩷
+    &lt;&lt;Developed with ☕❤
     &nbsp;by <a href="https://github.com/itsmadson" style="text-decoration:none;" target="_blank" rel="noopener">
       <span style="color: #FE07A6;">Madson</span>
     </a>
